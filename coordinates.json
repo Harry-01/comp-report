@@ -1,17 +1,23 @@
 [
     {
+      "name": "a",
+      "message": "hello",
       "coordinates": [
           -121.9921875, 
           37.87485339352928
       ]
     },
   {
+      "name": "a",
+      "name": "hi",
       "coordinates": [
         -121.728515625,
         37.26530995561875
       ]
     },
   {
+      "name": "a",
+      "message": "va",
       "coordinates": [
         -122.6953125,
         38.496593518947584
