@@ -1,0 +1,152 @@
+<html>
+
+<head>
+    <title>deck.gl ScatterplotLayer Example</title>
+    <script src="https://unpkg.com/deck.gl@^8.0.0/dist.min.js"></script>
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.0/mapbox-gl.js"></script>
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #map {
+            height: 100vh;
+            margin-left: 25%;
+        }
+
+        #tooltip {
+            position: absolute;
+            background: white;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .mapboxgl-popup {
+            max-width: 400px;
+            font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        }
+
+        .map-overlay {
+position: absolute;
+width: 25%;
+top: 0;
+bottom: 0;
+left: 0;
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+background-color: #fff;
+max-height: 100%;
+overflow: hidden;
+}
+ 
+.map-overlay fieldset {
+display: none;
+background: #ddd;
+border: none;
+padding: 10px;
+margin: 0;
+}
+ 
+.map-overlay input {
+display: block;
+border: none;
+width: 100%;
+border-radius: 3px;
+padding: 10px;
+margin: 0;
+box-sizing: border-box;
+}
+ 
+.map-overlay .listing {
+overflow: auto;
+max-height: 100%;
+}
+ 
+.map-overlay .listing > * {
+display: block;
+padding: 5px 10px;
+margin: 0;
+}
+ 
+.map-overlay .listing a {
+border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+color: #404;
+text-decoration: none;
+}
+ 
+.map-overlay .listing a:last-child {
+border: none;
+}
+ 
+.map-overlay .listing a:hover {
+background: #f0f0f0;
+}
+    </style>
+</head>
+
+<body>
+
+    <div id="map"></div>
+    <div id="tooltip"></div>
+    <div class="map-overlay">
+        <h2 id="averagePrice"></h2>
+        <h2 id="medianPrice"></h2>
+        <h2 id="modePrice"></h2>
+        <h3 id="numOfResults"></h3>
+        <h2>bedrooms</h2>
+        <div>
+        <button id="0bedroom" name="bedrooms" value="0">0</button>
+          <button id="1bedroom" name="bedrooms" value="1">1</button>
+          <button id="2bedroom" name="bedrooms" value="2">2</button>
+          <button id="3bedroom" name="bedrooms" value="3">3</button>
+          <button id="4bedroom" name="bedrooms" value="4">4</button>
+        </div>
+
+        <h2>bathroom</h2>
+        <div>
+            <button id="0bathroom" name="bathrooms" value="0">0</button>
+          <button id="1bathroom" name="bathrooms" value="1">1</button>
+          <button id="2bathroom" name="bathrooms" value="2">2</button>
+          <button id="3bathroom" name="bathrooms" value="3">3</button>
+          <button id="4bathroom" name="bathrooms" value="4">4</button>
+        </div>
+      
+
+
+        <h2>range</h2>
+        <div>
+            <input type="number" id="minPrice" name="range" placeholder="Min">
+            <label> - </label>
+            <input type="number" id="maxPrice" name="range" placeholder="Max">
+            <input type="submit" id="submit">
+        </div>
+        <div>
+            <label for="type">property type:</label>
+            <select id="propertyType" name="type">
+              <option value="House">Houses</option>
+              <option value="Fourplex">Fourplexes</option>
+              <option value="Apartment">Apartments</option>
+              <option value="Duplex/Triplex">Duplex/Triplex</option>
+              <option value="Condo">Condos</option>
+              <option value="Single Family Home">Single Family Home</option>
+              <option value="Townhouse">Townhouses</option>
+            </select>
+            <button id="submitPropertyType">submit</button>
+        </div>
+        <fieldset>
+        <label>filter</label>
+        <input id="feature-filter" type="text" placeholder="Filter results by name"/>
+        </fieldset>
+        <div id="feature-listing" class="listing"></div>
+
+
+
+        </div>
+    <!--<script src="../src/index.js"></script>-->
+    
+    
+</body>
+<script src="index.js"></script>
+
+
+</html>
